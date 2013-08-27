@@ -1,0 +1,15 @@
+<% @user.tweets.each do |tweet|%>
+	<div class="tweet-box">
+	 <div class="profile-img">
+	 	<img src=<%= tweet[:profile_image_url] %>>
+	 </div>
+
+	 <div class="tweet-text">
+	 	<%= tweet[:tweet] %>
+	 </div>
+
+	 <div class="tweeted-at">
+		 <%= tweet[:tweeted_at] %>
+	 </div>
+	</div>
+<% end %>
