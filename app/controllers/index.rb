@@ -14,8 +14,7 @@ get '/:username' do
   if @user.tweets.empty?
     user_tweets = Twitter.user_timeline(@user.username)
     user_tweets.each do |tweet|
-      tweet_time = tweet.created_at
-      new_tweets = Tweet.create(tweet: tweet.text, user_id: @user.id, tweeted_at: tweet_time, profile_image_url: tweet.profile_image_url)
+      new_tweets = Tweet.create(tweet: tweet.text, user_id: @user.id, tweeted_at: tweet.created_at, profile_image_url: tweet.profile_image_url)
       @user.tweets << new_tweets
     end
     erb :view_tweets, layout: false
